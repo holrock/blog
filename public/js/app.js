@@ -47,11 +47,9 @@ var home = {
   },
 
   view: function() {
-    return m("main", {class: "mdl-layout__content"},  [
-      home.vm.article_list().map(function(article, index) {
-        return m.component(ArticleComponent, {article: article});
-      })
-    ]);
+    return home.vm.article_list().map(function(article, index) {
+      return m.component(ArticleComponent, {article: article});
+    });
   }
 };
 
@@ -67,9 +65,7 @@ var article_page = {
     article_page.vm.init();
   },
   view: function(controller) {
-    return m("main", {class: "mdl-layout__content"},  [
-      m.component(ArticleComponent, {article: article_page.vm.article()})
-    ]);
+    return m.component(ArticleComponent, {article: article_page.vm.article()});
   }
 };
 
@@ -83,7 +79,7 @@ article_page.vm = {
   }
 };
 
-var main = document.getElementById("main");
+var main = document.getElementById("overview");
 m.route(main, "/", {
   "/": home,
   "/articles/:article_id": article_page
